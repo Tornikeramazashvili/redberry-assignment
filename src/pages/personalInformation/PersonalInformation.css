@@ -1,0 +1,19 @@
+input:focus {
+  outline: none;
+}
+
+.email-error-title {
+  color: red;
+}
+
+.email-no-error-title {
+  color: black;
+}
+
+.email-error-input {
+  border: 1px solid red;
+}
+
+.email-no-error-input {
+  border: 1px solid #ccc;
+}

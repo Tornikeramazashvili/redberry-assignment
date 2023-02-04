@@ -1,0 +1,99 @@
+import React, { useState} from 'react';
+import { useForm } from 'react-hook-form';
+
+export default function PersonalInformation() {
+
+    const { register, handleSubmit } = useForm();
+
+    const [name, setName] = useState(localStorage.getItem('name') || '');
+    const [surname, setSurname] = useState(localStorage.getItem('surname') || '');
+    const [email, setEmail] = useState(localStorage.getItem('email') || '');
+    const [mobileNumber, setMobileNumber] = useState(localStorage.getItem('mobileNumber') || '');
+    // const [imageUrl, setImageUrl] = useState(localStorage.getItem('imageUrl') || null);
+
+    const handleNameChange = (e) => {
+        setName(e.target.value);
+        localStorage.setItem('name', e.target.value);
+        console.log(name)
+    };
+
+    const handleSurnameChange = (e) => {
+        setSurname(e.target.value);
+        localStorage.setItem('surname', e.target.value);
+        console.log(surname)
+    };
+
+    const handleEmailChange = (e) => {
+        setEmail(e.target.value);
+        localStorage.setItem('email', e.target.value);
+        console.log(email)
+    };
+
+
+    const handleMobileNumberChange = (e) => {
+        setMobileNumber(e.target.value);
+        localStorage.setItem('mobileNumber', e.target.value);
+        console.log(mobileNumber)
+    };
+
+    const onSubmit = (data) => {
+        console.log('Submitted data:', data);
+    };
+
+
+    return (
+        <>
+            <div style={{ display: "flex" }}>
+                <form onSubmit={handleSubmit(onSubmit)} style={{ width: 500 }}>
+                    <input
+                        type="text"
+                        value={name}
+                        placeholder='სახელი'
+                        {...register('name')}
+                        onChange={handleNameChange}
+                    />
+                    <br />
+                    <br />
+                    <input
+                        type="text"
+                        value={surname}
+                        placeholder='გვარი'
+                        {...register('surname')}
+                        onChange={handleSurnameChange}
+                    />
+                    <br />
+                    <br />
+                    <input
+                        type="email"
+                        value={email}
+                        placeholder='anzor666@redberry.ge'
+                        {...register('email')}
+                        onChange={handleEmailChange}
+                    />
+                    <br />
+                    <br />
+                    <input
+                        type="tel"
+                        value={mobileNumber}
+                        placeholder='+995 551 12 34 56'
+                        {...register('mobileNumber')}
+                        onChange={handleMobileNumberChange}
+                    />
+                    <br />
+                    <br />
+                    <input type="submit" />
+                </form>
+                <div style={{ width: 500 }}>
+                    <p>{name}</p>
+                    <br />
+                    <p>{surname}</p>
+                    <br />
+                    <p>{email}</p>
+                    <br />
+                    <p>{mobileNumber}</p>
+                </div>
+            </div>
+        </>
+    )
+}
+
