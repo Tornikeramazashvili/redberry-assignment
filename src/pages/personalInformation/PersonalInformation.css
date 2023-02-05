@@ -2,18 +2,69 @@ input:focus {
   outline: none;
 }
 
-.email-error-title {
-  color: red;
+input {
+  display: block;
+  width: 100%;
+  max-width: 798px;
+  border: 1px solid #bcbcbc;
+  border-radius: 4px;
+  padding: 13px 16px;
+  font-size: 16px;
+  font-weight: 400;
 }
 
-.email-no-error-title {
-  color: black;
+#FIRST_NAME,
+#LAST_NAME {
+  width: 371px;
 }
 
-.email-error-input {
+.firstName-lastName-container {
+  display: flex;
+  gap: 56px;
+}
+
+.input-hint {
+  font-size: 14px;
+  font-weight: 300;
+  color: #2e2e2e;
+  cursor: default;
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.firstName-default-title,
+.lastName-default-title,
+.email-default-title,
+.mobile-default-title,
+.textarea-default {
+  display: inline-block;
+  font-weight: 500;
+  color: #000000;
+  cursor: default;
+}
+
+.firstName-error-title,
+.lastName-error-title,
+.email-error-title,
+.mobile-error-title {
+  display: inline-block;
+  color: #ef5050;
+}
+
+.firstName-default-input,
+.lastName-default-input,
+.email-default-input,
+.mobile-default-input {
+  border: 1px solid #bcbcbc;
+}
+
+.email-error-input,
+.mobile-error-input,
+.firstName-error-input,
+.lastName-error-input {
   border: 1px solid red;
 }
 
-.email-no-error-input {
-  border: 1px solid #ccc;
+.firstName-success-input {
+  border: 1px solid #98e37e;
 }
