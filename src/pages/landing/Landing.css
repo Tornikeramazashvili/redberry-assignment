@@ -1,6 +1,5 @@
 .background-container {
-  background-image: url("../../assets/images/shutterstock_2189773743\ 1\ \(2\).png");
-  background-position: center;
+  background-image: url("../../assets/images/background.webp");
   background-size: cover;
   width: 100%;
   height: 100vh;
@@ -30,4 +29,90 @@
   color: #ffffff;
   margin: auto;
   display: block;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 610px) {
+  .add-resume-btn {
+    padding: 18px 116px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .add-resume-btn {
+    padding: 18px 106px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 555px) {
+  .add-resume-btn {
+    padding: 18px 96px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 515px) {
+  .add-resume-btn {
+    padding: 18px 76px;
+    display: block;
+  }
+  .redberry-logo-container {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 490px) {
+  .add-resume-btn {
+    padding: 18px 70px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 460px) {
+  .add-resume-btn {
+    padding: 18px 60px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .add-resume-btn {
+    padding: 18px 50px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .add-resume-btn {
+    padding: 18px 40px;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 415px) {
+  .redberry-logo {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .add-resume-btn {
+    padding: 18px 30px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .add-resume-btn {
+    padding: 18px 20px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .add-resume-btn {
+    padding: 18px 18px;
+    font-size: 16px;
+  }
 }

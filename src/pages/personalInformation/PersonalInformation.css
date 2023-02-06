@@ -1,3 +1,68 @@
+.form-container {
+  padding: 45px 48px;
+  background-color: #f9f9f9;
+}
+
+.personal-information-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1a1a1a;
+  padding-bottom: 12px;
+}
+
+.personal-information-title {
+  font-size: 24px;
+  color: #1a1a1a;
+  font-weight: 700;
+  cursor: default;
+}
+
+.personal-information-pages {
+  font-size: 20px;
+  color: #1a1a1a;
+  font-weight: 400;
+  cursor: default;
+}
+
+.button-container {
+  display: flex;
+  justify-content: end;
+}
+
+.button {
+  padding: 14px 35px;
+  background-color: #6b40e3;
+  border: none;
+  color: #ffffff;
+  font-size: 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #512faf;
+  transition: 0.2s;
+}
+
+.firstName-lastName-container {
+  margin-bottom: 54px;
+}
+
+.about-myself-container {
+  margin-bottom: 33px;
+}
+
+.email-container {
+  margin-bottom: 29px;
+}
+
+.mobile-container {
+  margin-bottom: 160px;
+}
+
 input:focus {
   outline: none;
 }
@@ -19,7 +84,9 @@ input {
 }
 
 .firstName-lastName-container {
+  margin-top: 77px;
   display: flex;
+  flex-wrap: wrap;
   gap: 56px;
 }
 
@@ -32,23 +99,85 @@ input {
   margin-top: 8px;
 }
 
+.upload-image-title {
+  /* width: 100%; */
+  font-size: 18px;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: default;
+}
+
+.upload-image-input {
+  border: none;
+  display: none;
+}
+
+.upload-button-container {
+  display: inline-block;
+  padding: 4px 19px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #0e80bf;
+  color: #ffffff;
+  font-size: 14px;
+  margin-left: 19px;
+}
+
+.upload-image-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 49px;
+}
+
+.firstname-input-error,
+.lastname-input-error {
+  position: absolute;
+  left: 325px;
+}
+
+.upload-image-input-error {
+  position: absolute;
+  top: 322px;
+  left: 420px;
+}
+
+.input-error {
+  position: absolute;
+  left: 750px;
+}
+
+.email-input-and-error-container,
+.mobile-input-and-error-container,
+.firstname-input-and-error-container,
+.lastname-input-and-error-container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
 .firstName-default-title,
 .lastName-default-title,
 .email-default-title,
 .mobile-default-title,
-.textarea-default {
+.textarea-default,
+.about-myself-title {
+  color: #000000;
   display: inline-block;
   font-weight: 500;
-  color: #000000;
   cursor: default;
+  margin-bottom: 8px;
 }
 
 .firstName-error-title,
 .lastName-error-title,
 .email-error-title,
 .mobile-error-title {
-  display: inline-block;
   color: #ef5050;
+  display: inline-block;
+  font-weight: 500;
+  cursor: default;
+  margin-bottom: 8px;
 }
 
 .firstName-default-input,
@@ -65,6 +194,40 @@ input {
   border: 1px solid red;
 }
 
-.firstName-success-input {
+.firstName-success-input,
+.lastName-success-input,
+.email-success-input,
+.mobile-success-input {
   border: 1px solid #98e37e;
+}
+
+.about-myself-input {
+  padding: 13px 16px 103px 16px;
+}
+
+.container {
+  display: flex;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 894px) {
+  #FIRST_NAME,
+  #LAST_NAME {
+    max-width: 100%;
+    width: 798px;
+  }
+  .firstName-container {
+    margin-bottom: 29px;
+  }
+  .firstName-lastName-container {
+    gap: 0px;
+  }
+
+  .firstname-input-error,
+  .lastname-input-error,
+  .upload-image-input-error,
+  .input-error {
+    display: none;
+  }
 }
