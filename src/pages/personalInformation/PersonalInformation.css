@@ -296,8 +296,12 @@ input {
   width: 450px;
   word-wrap: break-word;
   line-height: 22px;
-  text-justify: inter-word;
   text-align: justify;
+}
+
+.second-form-about-myself-line {
+  border-bottom: 1px solid #c8c8c8;
+  padding-bottom: 19px;
 }
 
 /* Media queries */

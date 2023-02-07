@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
-import './PersonalInformation.css'
+import useFormPersist from 'react-hook-form-persist'
 
+import './PersonalInformation.css'
 import checkMark from "../../assets/images/greenCheckmark.svg"
 import exclamationMark from '../../assets/images/redExclamationMark.svg'
 import arrowLeft from '../../assets/images/arrow-left.svg'
@@ -15,20 +16,29 @@ const PersonalInfo = PersonalInfoGeorgianString.toUpperCase();
 const buttonGeorgianString = "შემდეგი"
 const button = buttonGeorgianString.toUpperCase();
 
-
 const PersonalInformation = () => {
 
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({
+  // retrieving the stored data from local storage 
+  // and set it as the default values when the form is loaded.
+  const [defaultValues, setDefaultValues] = useState({});
 
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      aboutMyself: "",
-      email: "",
-      mobile: "",
-      image: ""
+  useEffect(() => {
+    const storedData = window.localStorage.getItem("storageKey");
+    if (storedData) {
+      setDefaultValues(JSON.parse(storedData));
     }
-  })
+  }, []);
+
+  const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({
+    defaultValues
+  });
+
+  useFormPersist("storageKey", {
+    watch,
+    setValue,
+    storage: window.localStorage,
+    // exclude: [''] 
+  });
 
   const onSubmit = data => {
     console.log(data);
@@ -140,12 +150,11 @@ const PersonalInformation = () => {
               <span className='input-hint'>უნდა აკმაყოფილებდეს ქართული მობილურის ნომრის ფორმატს</span>
             </div>
             <div className='button-container'>
-              <button className='button' type="submit">Submit</button>
+              <button className='button' type="submit">{button}</button>
             </div>
           </form>
         </div>
         <div>
-
           <div className='second-form-container'>
             <div className='second-form-firstname-lastname-container'>
               <span className='second-form-firstname-title'>{firstName}</span>
@@ -162,6 +171,8 @@ const PersonalInformation = () => {
             <div className='second-form-about-myself-container'>
               {aboutMyself ? <span className='second-form-about-myself-title'>ჩემს შესახებ</span> : ""}
               <p className='second-form-about-myself-text'>{aboutMyself}</p>
+              {/* როცა მეორე გვერდზე გადახვალ, მერე მიამატე ეს */}
+              {/* {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""} */}
             </div>
           </div>
         </div>
