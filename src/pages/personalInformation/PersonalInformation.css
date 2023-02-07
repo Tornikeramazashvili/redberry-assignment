@@ -1,6 +1,15 @@
 .form-container {
-  padding: 45px 48px;
+  padding: 47px 150px 65px 0px;
   background-color: #f9f9f9;
+}
+
+.arrow-left {
+  cursor: pointer;
+}
+
+.arrow-left-container {
+  background-color: #f9f9f9;
+  padding: 45px 61px 0px 48px;
 }
 
 .personal-information-container {
@@ -124,6 +133,11 @@ input {
   margin-left: 19px;
 }
 
+.upload-button-container:hover {
+  background-color: #0c6a9c;
+  transition: 0.2s;
+}
+
 .upload-image-container {
   display: flex;
   align-items: center;
@@ -138,8 +152,8 @@ input {
 
 .upload-image-input-error {
   position: absolute;
-  top: 322px;
-  left: 420px;
+  top: 324px;
+  left: 520px;
 }
 
 .input-error {
@@ -207,9 +221,112 @@ input {
 
 .container {
   display: flex;
+  /* justify-content: center; */
+}
+
+/* second form */
+
+.icon {
+  display: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.icon.show {
+  display: inline-block;
+}
+
+.second-form-container {
+  padding: 68px 75px 0px 80px;
+  background-color: #ffffff;
+}
+
+.second-form-firstname-lastname-container {
+  width: 450px;
+  word-wrap: break-word;
+}
+
+.second-form-email-container {
+  margin-top: 17px;
+  align-items: center;
+  display: flex;
+}
+
+.second-form-email-title {
+  margin-left: 11px;
+  font-size: 18px;
+  color: #1a1a1a;
+  font-weight: 400;
+  cursor: default;
+}
+
+.second-form-firstname-title,
+.second-form-lastname-title {
+  color: #f93b1d;
+  font-size: 34px;
+  font-weight: 700;
+  margin-right: 20px;
+  cursor: default;
+}
+
+.second-form-mobile-container {
+  margin-top: 10px;
+  align-items: center;
+  display: flex;
+}
+
+.second-form-about-myself-container {
+  margin-top: 34px;
+}
+
+.second-form-about-myself-title {
+  color: #f93b1d;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: default;
+}
+
+.second-form-about-myself-text {
+  margin-top: 15px;
+  cursor: default;
+  color: #000000;
+  font-weight: 400;
+  width: 450px;
+  word-wrap: break-word;
+  line-height: 22px;
+  text-justify: inter-word;
+  text-align: justify;
 }
 
 /* Media queries */
+
+@media screen and (max-width: 1124px) {
+  .container {
+    flex-wrap: wrap;
+  }
+  .form-container {
+    padding: 65px;
+  }
+  .arrow-left-container {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 927px) {
+  #FIRST_NAME,
+  #LAST_NAME {
+    max-width: 100%;
+    width: 798px;
+  }
+  .firstName-lastName-container,
+  .upload-image-container {
+    gap: 30px;
+    margin-bottom: 45px;
+    margin-top: 50px;
+  }
+}
 
 @media screen and (max-width: 894px) {
   #FIRST_NAME,

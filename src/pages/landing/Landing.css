@@ -31,6 +31,11 @@
   display: block;
 }
 
+.add-resume-btn:hover {
+  background-color: rgba(26, 26, 26, 0.815);
+  transition: 0.2s;
+}
+
 /* Media queries */
 
 @media screen and (max-width: 610px) {
