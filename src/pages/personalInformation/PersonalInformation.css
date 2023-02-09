@@ -1,3 +1,7 @@
+.container {
+  flex-wrap: wrap;
+}
+
 .form-container {
   padding: 47px 150px 65px 0px;
   background-color: #f9f9f9;
@@ -37,7 +41,7 @@
 
 .button-container {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 
 .button {
@@ -316,6 +320,11 @@ input {
   .arrow-left-container {
     display: none;
   }
+  .upload-image-input-error {
+    position: absolute;
+    top: 342px;
+    left: 440px;
+  }
 }
 
 @media screen and (max-width: 927px) {
@@ -330,6 +339,11 @@ input {
     margin-bottom: 45px;
     margin-top: 50px;
   }
+  .firstname-input-error,
+  .lastname-input-error,
+  .upload-image-input-error, .input-error {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 894px) {
@@ -343,12 +357,5 @@ input {
   }
   .firstName-lastName-container {
     gap: 0px;
-  }
-
-  .firstname-input-error,
-  .lastname-input-error,
-  .upload-image-input-error,
-  .input-error {
-    display: none;
   }
 }
