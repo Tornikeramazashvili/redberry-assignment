@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import useFormPersist from 'react-hook-form-persist'
 
-import AddForm from '../../components/AddForm';
 import '../personalExperience/PersonalExperience.css'
 
 import checkMark from "../../assets/images/greenCheckmark.svg"
@@ -36,7 +35,13 @@ const PersonalExperience = () => {
   const endDate = watch('endDate')
   const jobDescription = watch('jobDescription')
 
-  const POSITION_EMPLOYER_DESCRIPTION_REGEX = /^[A-Za-zა-ჰ]{2,}( [A-Za-zა-ჰ]+)*$/;
+  const anotherPosition = watch('anotherPosition')
+  const anotherEmployer = watch('anotherEmployer')
+  const anotherStartDate = watch('anotherStartDate')
+  const anotherEndDate = watch('anotherEndDate')
+  const anotherJobDescription = watch('anotherJobDescription')
+
+  const POSITION_EMPLOYER_DESCRIPTION_REGEX = /^[A-Za-zა-ჰ.,;:!?'"0-9]{2,}( [A-Za-zა-ჰ.,;:!?'"0-9]+)*$/;
   const NAMES_REGEX = /^[ა-ჰ]+$/;
   const EMAIL_REGEX = /^[a-zA-Z]+@redberry.ge$/;
   const MOBILE_REGEX = /^\+995\d{9}$/;
@@ -58,22 +63,23 @@ const PersonalExperience = () => {
   const onSubmit = (data) => {
     if (Object.keys(errors).length === 0) {
       console.log(data)
-      navigate('/personalExperience')
+      navigate('/personalEducation')
     } else if (setDefaultValues()) {
       console.log(data)
-      navigate("/personalExperience");
+      navigate("/personalEducation");
     } else {
       console.log(Object.keys(errors).length)
     }
   };
 
   const [showComponent, setShowComponent] = useState(
-    localStorage.getItem('showComponent') === 'true'
+    JSON.parse(localStorage.getItem("showComponent")) || false
   );
 
   useEffect(() => {
-    localStorage.setItem('showComponent', showComponent);
+    localStorage.setItem("showComponent", JSON.stringify(showComponent));
   }, [showComponent]);
+
 
   return (
     <>
@@ -87,7 +93,6 @@ const PersonalExperience = () => {
               <div><span className='personal-information-title'>{personalExperience}</span></div>
               <div><span className='personal-information-pages'>2/3</span></div>
             </div>
-
             <div className='position-container-personal-experience'>
               <span className={errors.position ? 'email-error-title' : 'email-default-title'}>თანამდებობა</span>
               <div className='email-input-and-error-container'>
@@ -116,7 +121,6 @@ const PersonalExperience = () => {
               </div>
               <span className='input-hint'>მინიმუმ 2 სიმბოლო</span>
             </div>
-
             <div className='date-container'>
               <div className='firstName-container'>
                 <span className={errors.firstName ? 'firstName-error-title' : 'firstName-default-title'}>დაწყების რიცხვი</span>
@@ -136,7 +140,6 @@ const PersonalExperience = () => {
                 </div>
               </div>
             </div>
-
             <div className='description-container'>
               <span className='about-myself-title'>აღწერა</span>
               <input
@@ -147,13 +150,78 @@ const PersonalExperience = () => {
               />
             </div>
             <p className='second-form-description-horizontal-line'></p>
-            {showComponent && <AddForm />}
             <div>
-              <button className='second-form-more-experience-button' onClick={() => setShowComponent(!showComponent)}>მეტი გამოცდილების დამატება</button>
+              {/* ....................................................... */}
+              {showComponent ?
+                <>
+                  <div className='another-position-container-personal-experience'>
+                    <span className={errors.anotherPosition ? 'email-error-title' : 'email-default-title'}>თანამდებობა</span>
+                    <div className='email-input-and-error-container'>
+                      <input
+                        type='text'
+                        placeholder='დეველოპერი, დიზაინერი, ა.შ.'
+                        className={errors.anotherPosition ? "email-error-input" : "email-default-input "}
+                        {...register('anotherPosition', { required: true, pattern: POSITION_EMPLOYER_DESCRIPTION_REGEX })} />
+                      <span className='input-error'>
+                        {anotherPosition && !errors.anotherPosition && POSITION_EMPLOYER_DESCRIPTION_REGEX.test(anotherPosition) ?
+                          (<img src={checkMark} alt='green checkmark' />) : errors.anotherPosition ? (<img src={exclamationMark} alt='red exclamation mark' />) : ""}
+                      </span>
+                    </div>
+                    <span className='input-hint'>მინიმუმ 2 სიმბოლო</span>
+                  </div>
+
+                  <div className='another-position-container-personal-experience'>
+                    <span className={errors.anotherEmployer ? 'email-error-title' : 'email-default-title'}>დამსაქმებელი</span>
+                    <div className='email-input-and-error-container'>
+                      <input
+                        type='text'
+                        placeholder='დამსაქმებელი'
+                        className={errors.anotherEmployer ? "email-error-input" : "email-default-input "}
+                        {...register('anotherEmployer', { required: true, pattern: POSITION_EMPLOYER_DESCRIPTION_REGEX })} />
+                      <span className='input-error'>
+                        {anotherEmployer && !errors.anotherEmployer && POSITION_EMPLOYER_DESCRIPTION_REGEX.test(anotherEmployer) ?
+                          (<img src={checkMark} alt='green checkmark' />) : errors.anotherEmployer ? (<img src={exclamationMark} alt='red exclamation mark' />) : ""}
+                      </span>
+                    </div>
+                    <span className='input-hint'>მინიმუმ 2 სიმბოლო</span>
+                  </div>
+                  <div className='date-container'>
+                    <div className='firstName-container'>
+                      <span className={errors.anotherStartDate ? 'firstName-error-title' : 'firstName-default-title'}>დაწყების რიცხვი</span>
+                      <div className='firstname-input-and-error-container'>
+                        <input type='date' id='FIRST_NAME'
+                          {...register('anotherStartDate', { required: true })}
+                          className={anotherStartDate && !errors.anotherStartDate ? "email-success-input" : errors.anotherStartDate ? "email-error-input" : "email-default-input "}
+                        />
+                      </div>
+                    </div>
+                    <div className='lastName-container'>
+                      <span className={errors.anotherEndDate ? 'lastName-error-title' : 'lastName-default-title'}>დამთავრების რიცხვი</span>
+                      <div className='lastname-input-and-error-container'>
+                        <input type='date' id='FIRST_NAME'
+                          {...register('anotherEndDate', { required: true })}
+                          className={anotherEndDate && !errors.anotherEndDate ? "email-success-input" : errors.anotherEndDate ? "email-error-input" : "email-default-input "} />
+                      </div>
+                    </div>
+                  </div>
+                  <div className='another-description-container'>
+                    <span className='about-myself-title'>აღწერა</span>
+                    <input
+                      type='text'
+                      className={anotherJobDescription && !errors.anotherJobDescription ? "description-success-input" : errors.anotherJobDescription ? "description-error-input" : "description-default-input "}
+                      placeholder='როლი თანანმდებობაზე და ზოგადი აღწერა'
+                      {...register('anotherJobDescription', { required: true, pattern: POSITION_EMPLOYER_DESCRIPTION_REGEX })}
+                    />
+                  </div>
+                </> : null}
+            </div>
+            {/* ..................................................................... */}
+            <div>
+              <button type='button' className='second-form-more-experience-button' onClick={() => setShowComponent(!showComponent)} >მეტი გამოცდილების დამატება</button>
             </div>
             <div className='button-container-personal-experience'>
-              <button className='button' onClick={() => navigate(-1)} >{backButton}</button>
-              <button className='button' type="submit" >{nextButton}</button>
+              <button className='button' onClick={() => navigate('/personalInformation')} >{backButton}</button>
+              <button className='button'>{nextButton}</button>
             </div>
           </form>
         </div>
@@ -192,6 +260,23 @@ const PersonalExperience = () => {
             </div>
             <div className='second-form-description-container'>
               <p className='second-form-description-text'>{jobDescription}</p>
+            </div>
+            {/* ................................. */}
+            <div className='second-form-experience-container'>
+
+              <div style={{ marginTop: "15px" }}>
+                <span className='second-form-position-text'>{anotherPosition}</span>
+                {anotherEmployer ? <span>, </span> : ""}
+                <span className='second-form-position-text'>{anotherEmployer}</span>
+              </div>
+            </div>
+            <div className='second-form-date-container'>
+              <span className='second-form-date-text'>{anotherStartDate}</span>
+              {anotherEndDate ? <span className='second-form-date-text'> - </span> : ""}
+              <span className='second-form-date-text'>{anotherEndDate}</span>
+            </div>
+            <div className='second-form-description-container'>
+              <p className='second-form-description-text'>{anotherJobDescription}</p>
             </div>
           </div>
         </div>

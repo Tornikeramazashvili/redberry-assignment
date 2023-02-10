@@ -84,7 +84,7 @@ const PersonalInformation = () => {
     <>
       <div className='container'>
         <div className="arrow-left-container" >
-          <img src={arrowLeft} className='arrow-left' alt='arrow left logo' onClick={() => navigate(-1)} />
+          <img src={arrowLeft} className='arrow-left' alt='arrow left logo' onClick={() => navigate('/')} />
         </div>
         <div className='form-container'>
           <form onSubmit={handleSubmit(onSubmit)}>

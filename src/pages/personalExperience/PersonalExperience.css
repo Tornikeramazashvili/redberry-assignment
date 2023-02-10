@@ -68,7 +68,7 @@ input {
 }
 
 .second-form-description-container {
-  width: 550px;
+  width: 662px;
   max-width: 100%;
   margin-top: 16px;
   /* text-align: justify; */
@@ -99,4 +99,13 @@ input {
 .second-form-more-experience-button:hover {
   background-color: #4e8cd3;
   transition: 0.2s;
+}
+
+.another-position-container-personal-experience {
+  margin-bottom: 31px;
+}
+
+.another-description-container {
+  margin-top: 33px;
+  margin-bottom: 53px;
 }
