@@ -27,7 +27,13 @@ const PersonalInformation = () => {
   const mobile = watch('mobile')
   const image = watch('image')
 
-  const NAMES_REGEX = /^[ა-ჰ]+$/;
+  const position = watch('position')
+  const employer = watch('employer')
+  const startDate = watch('startDate')
+  const endDate = watch('endDate')
+  const jobDescription = watch('jobDescription')
+
+  const NAMES_REGEX = /^[ა-ჰ]{2,}$/;
   const EMAIL_REGEX = /^[a-zA-Z]+@redberry.ge$/;
   const MOBILE_REGEX = /^\+995\d{9}$/;
   const navigate = useNavigate();
@@ -39,16 +45,24 @@ const PersonalInformation = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const savedImageData = window.localStorage.getItem('image');
+    if (savedImageData) {
+      setPreviewUrl(savedImageData);
+    }
+  }, []);
+
   useFormPersist("storageKey", {
     watch,
     setValue,
     storage: window.localStorage,
   });
 
-  const handleChange = (e) => {
+  const handleImageUpload = (e) => {
     const reader = new FileReader();
     reader.onload = (event) => {
       setPreviewUrl(event.target.result);
+      window.localStorage.setItem('image', event.target.result);
     };
     reader.readAsDataURL(e.target.files[0]);
     setImg(e.target.files[0]);
@@ -108,7 +122,7 @@ const PersonalInformation = () => {
             <div className='upload-image-container'>
               <span className='upload-image-title'>პირადი ფოტოს ატვირთვა</span>
               <label className='upload-button-container'>
-                <input type="file" onChange={handleChange} className='upload-image-input' {...register('image', { required: true, pattern: /\.(jpeg|jpg|png)$/ })} />
+                <input type="file" onChange={handleImageUpload} className='upload-image-input' {...register('image', { required: true, pattern: /\.(jpeg|jpg|png)$/ })} />
                 <p>ატვირთვა</p>
                 <span className='upload-image-input-error'>
                   {image?.length > 0 && !errors.image ? <img src={checkMark} alt='green checkmark' /> : errors.image && <img src={exclamationMark} alt='red exclamation mark' />}
@@ -163,6 +177,9 @@ const PersonalInformation = () => {
               <span className='second-form-firstname-title'>{firstName}</span>
               <span className='second-form-lastname-title'>{lastName}</span>
             </div>
+            <div>
+              {previewUrl && <img src={previewUrl} alt="preview" />}
+            </div>
             <div className='second-form-email-container'>
               {email ? <img src={emailIcon} alt='email' /> : ""}
               <span className='second-form-email-title'>{email}</span>
@@ -174,8 +191,22 @@ const PersonalInformation = () => {
             <div className='second-form-about-myself-container'>
               {aboutMyself ? <span className='second-form-about-myself-title'>ჩემს შესახებ</span> : ""}
               <p className='second-form-about-myself-text'>{aboutMyself}</p>
-              {/* როცა მეორე გვერდზე გადახვალ, მერე მიამატე ეს */}
-              {/* {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""} */}
+            </div>
+            <div className='second-form-experience-container'>
+              {position ? <span className='second-form-about-myself-title'>გამოცდილება</span> : ""}
+              <div style={{ marginTop: "15px" }}>
+                <span className='second-form-position-text'>{position}</span>
+                {employer ? <span>, </span> : ""}
+                <span className='second-form-position-text'>{employer}</span>
+              </div>
+            </div>
+            <div className='second-form-date-container'>
+              <span className='second-form-date-text'>{startDate}</span>
+              {endDate ? <span className='second-form-date-text'> - </span> : ""}
+              <span className='second-form-date-text'>{endDate}</span>
+            </div>
+            <div className='second-form-description-container'>
+              <p className='second-form-description-text'>{jobDescription}</p>
             </div>
           </div>
         </div>

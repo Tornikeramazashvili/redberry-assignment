@@ -300,7 +300,7 @@ input {
   width: 450px;
   word-wrap: break-word;
   line-height: 22px;
-  text-align: justify;
+  /* text-align: justify; */
 }
 
 .second-form-about-myself-line {
@@ -341,7 +341,8 @@ input {
   }
   .firstname-input-error,
   .lastname-input-error,
-  .upload-image-input-error, .input-error {
+  .upload-image-input-error,
+  .input-error {
     display: none;
   }
 }

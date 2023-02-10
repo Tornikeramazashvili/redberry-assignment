@@ -1,0 +1,102 @@
+input {
+  width: 798px;
+  max-width: 100%;
+}
+
+.button-container-personal-experience {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 115px;
+}
+
+.position-container-personal-experience {
+  margin-top: 77px;
+  margin-bottom: 31px;
+}
+.employer-container-personal-experience {
+  margin-top: 31px;
+}
+
+.second-form-experience-container {
+  margin-top: 24px;
+}
+
+.second-form-position-text {
+  cursor: default;
+}
+
+.date-container {
+  margin-top: 31px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 56px;
+}
+
+.description-container {
+  margin-top: 33px;
+}
+
+.add-form-description-container {
+  margin-top: 33px;
+}
+
+.description-success-input {
+  border: 1px solid #98e37e;
+  padding: 13px 16px 103px 16px;
+}
+
+.description-error-input {
+  border: 1px solid red;
+  padding: 13px 16px 103px 16px;
+}
+
+.description-default-input {
+  border: 1px solid #bcbcbc;
+  padding: 13px 16px 103px 16px;
+}
+
+.second-form-date-container {
+  margin-top: 7px;
+}
+
+.second-form-date-text {
+  color: #909090;
+  font-size: 16;
+  font-weight: 400;
+  font-style: italic;
+  cursor: default;
+}
+
+.second-form-description-container {
+  width: 550px;
+  max-width: 100%;
+  margin-top: 16px;
+  /* text-align: justify; */
+}
+
+.second-form-description-text {
+  color: #000000;
+  line-height: 22px;
+  cursor: default;
+}
+
+.second-form-description-horizontal-line {
+  border-bottom: 1px solid #c8c8c8;
+  margin: 53px 0px 42px 0px;
+}
+
+.second-form-more-experience-button {
+  border: none;
+  background-color: #62a1eb;
+  padding: 14px 21px;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.second-form-more-experience-button:hover {
+  background-color: #4e8cd3;
+  transition: 0.2s;
+}
