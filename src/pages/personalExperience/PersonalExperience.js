@@ -73,11 +73,11 @@ const PersonalExperience = () => {
   };
 
   const [showComponent, setShowComponent] = useState(
-    JSON.parse(localStorage.getItem("showComponent")) || false
+    JSON.parse(localStorage.getItem("addExperience")) || false
   );
 
   useEffect(() => {
-    localStorage.setItem("showComponent", JSON.stringify(showComponent));
+    localStorage.setItem("addExperience", JSON.stringify(showComponent));
   }, [showComponent]);
 
 
@@ -123,7 +123,7 @@ const PersonalExperience = () => {
             </div>
             <div className='date-container'>
               <div className='firstName-container'>
-                <span className={errors.firstName ? 'firstName-error-title' : 'firstName-default-title'}>დაწყების რიცხვი</span>
+                <span className={errors.startDate ? 'firstName-error-title' : 'firstName-default-title'}>დაწყების</span>
                 <div className='firstname-input-and-error-container'>
                   <input type='date' id='FIRST_NAME'
                     {...register('startDate', { required: true })}
@@ -132,7 +132,7 @@ const PersonalExperience = () => {
                 </div>
               </div>
               <div className='lastName-container'>
-                <span className={errors.lastName ? 'lastName-error-title' : 'lastName-default-title'}>დამთავრების რიცხვი</span>
+                <span className={errors.endDate ? 'lastName-error-title' : 'lastName-default-title'}>დამთავრების რიცხვი</span>
                 <div className='lastname-input-and-error-container'>
                   <input type='date' id='FIRST_NAME'
                     {...register('endDate', { required: true })}
@@ -141,7 +141,7 @@ const PersonalExperience = () => {
               </div>
             </div>
             <div className='description-container'>
-              <span className='about-myself-title'>აღწერა</span>
+              <span className={errors.jobDescription ? 'lastName-error-title' : 'lastName-default-title'}>აღწერა</span>
               <input
                 type='text'
                 className={jobDescription && !errors.jobDescription ? "description-success-input" : errors.jobDescription ? "description-error-input" : "description-default-input "}
@@ -151,7 +151,6 @@ const PersonalExperience = () => {
             </div>
             <p className='second-form-description-horizontal-line'></p>
             <div>
-              {/* ....................................................... */}
               {showComponent ?
                 <>
                   <div className='another-position-container-personal-experience'>
@@ -160,8 +159,9 @@ const PersonalExperience = () => {
                       <input
                         type='text'
                         placeholder='დეველოპერი, დიზაინერი, ა.შ.'
-                        className={errors.anotherPosition ? "email-error-input" : "email-default-input "}
+                        className={anotherPosition && !errors.anotherPosition && POSITION_EMPLOYER_DESCRIPTION_REGEX.test(anotherPosition) ? "email-success-input" : errors.anotherPosition ? "email-error-input" : "email-default-input "}
                         {...register('anotherPosition', { required: true, pattern: POSITION_EMPLOYER_DESCRIPTION_REGEX })} />
+
                       <span className='input-error'>
                         {anotherPosition && !errors.anotherPosition && POSITION_EMPLOYER_DESCRIPTION_REGEX.test(anotherPosition) ?
                           (<img src={checkMark} alt='green checkmark' />) : errors.anotherPosition ? (<img src={exclamationMark} alt='red exclamation mark' />) : ""}
@@ -169,14 +169,13 @@ const PersonalExperience = () => {
                     </div>
                     <span className='input-hint'>მინიმუმ 2 სიმბოლო</span>
                   </div>
-
                   <div className='another-position-container-personal-experience'>
                     <span className={errors.anotherEmployer ? 'email-error-title' : 'email-default-title'}>დამსაქმებელი</span>
                     <div className='email-input-and-error-container'>
                       <input
                         type='text'
                         placeholder='დამსაქმებელი'
-                        className={errors.anotherEmployer ? "email-error-input" : "email-default-input "}
+                        className={anotherEmployer && !errors.anotherEmployer && POSITION_EMPLOYER_DESCRIPTION_REGEX.test(anotherEmployer) ? "email-success-input" : errors.anotherEmployer ? "email-error-input" : "email-default-input "}
                         {...register('anotherEmployer', { required: true, pattern: POSITION_EMPLOYER_DESCRIPTION_REGEX })} />
                       <span className='input-error'>
                         {anotherEmployer && !errors.anotherEmployer && POSITION_EMPLOYER_DESCRIPTION_REGEX.test(anotherEmployer) ?
@@ -187,7 +186,7 @@ const PersonalExperience = () => {
                   </div>
                   <div className='date-container'>
                     <div className='firstName-container'>
-                      <span className={errors.anotherStartDate ? 'firstName-error-title' : 'firstName-default-title'}>დაწყების რიცხვი</span>
+                      <span className={errors.anotherStartDate ? 'email-error-title' : 'email-default-title'}>დაწყების რიცხვი</span>
                       <div className='firstname-input-and-error-container'>
                         <input type='date' id='FIRST_NAME'
                           {...register('anotherStartDate', { required: true })}
@@ -205,7 +204,7 @@ const PersonalExperience = () => {
                     </div>
                   </div>
                   <div className='another-description-container'>
-                    <span className='about-myself-title'>აღწერა</span>
+                    <span className={errors.anotherJobDescription ? 'lastName-error-title' : 'lastName-default-title'}>აღწერა</span>
                     <input
                       type='text'
                       className={anotherJobDescription && !errors.anotherJobDescription ? "description-success-input" : errors.anotherJobDescription ? "description-error-input" : "description-default-input "}
@@ -215,7 +214,6 @@ const PersonalExperience = () => {
                   </div>
                 </> : null}
             </div>
-            {/* ..................................................................... */}
             <div>
               <button type='button' className='second-form-more-experience-button' onClick={() => setShowComponent(!showComponent)} >მეტი გამოცდილების დამატება</button>
             </div>
@@ -244,7 +242,6 @@ const PersonalExperience = () => {
               <p className='second-form-about-myself-text'>{aboutMyself}</p>
               {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""}
             </div>
-            {/* ......................................................................... */}
             <div className='second-form-experience-container'>
               {position ? <span className='second-form-about-myself-title'>გამოცდილება</span> : ""}
               <div style={{ marginTop: "15px" }}>
@@ -261,9 +258,7 @@ const PersonalExperience = () => {
             <div className='second-form-description-container'>
               <p className='second-form-description-text'>{jobDescription}</p>
             </div>
-            {/* ................................. */}
             <div className='second-form-experience-container'>
-
               <div style={{ marginTop: "15px" }}>
                 <span className='second-form-position-text'>{anotherPosition}</span>
                 {anotherEmployer ? <span>, </span> : ""}

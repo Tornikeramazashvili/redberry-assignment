@@ -120,7 +120,7 @@ const PersonalInformation = () => {
               </div>
             </div>
             <div className='upload-image-container'>
-              <span className='upload-image-title'>პირადი ფოტოს ატვირთვა</span>
+              <span className={errors.image ? 'lastName-error-title' : 'lastName-default-title'}>პირადი ფოტოს ატვირთვა</span>
               <label className='upload-button-container'>
                 <input type="file" onChange={handleImageUpload} className='upload-image-input' {...register('image', { required: true, pattern: /\.(jpeg|jpg|png)$/ })} />
                 <p>ატვირთვა</p>

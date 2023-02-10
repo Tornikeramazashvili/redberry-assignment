@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import './Landing.css'
 import redberryLogo from "../../assets/images/redberry-logo.svg"
 
-
 const addResumeGeorgianString = "რეზიუმეს დამატება";
 const addResumeBtn = addResumeGeorgianString.toUpperCase();
 
