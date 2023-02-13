@@ -18,7 +18,8 @@ const Landing = () => {
                 <div className='add-resume-btn-container'>
                     <button className='add-resume-btn'
                         onClick={() => navigate("/personalInformation")}
-                    >{addResumeBtn}</button>
+                    >{addResumeBtn}
+                    </button>
                 </div>
             </div>
         </>

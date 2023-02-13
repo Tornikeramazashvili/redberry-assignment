@@ -21,6 +21,10 @@ input {
   margin-top: 24px;
 }
 
+.second-form-personal-experience-container {
+  margin-top: 15px;
+}
+
 .second-form-position-text {
   cursor: default;
 }
@@ -30,13 +34,14 @@ input {
   display: flex;
   flex-wrap: wrap;
   gap: 56px;
+  align-items: center;
 }
 
 .description-container {
   margin-top: 33px;
 }
 
-.add-university-description-container{
+.add-university-description-container {
   margin-top: 33px;
   margin-bottom: 33px;
 }
@@ -113,4 +118,25 @@ input {
 .another-description-container {
   margin-top: 33px;
   margin-bottom: 53px;
+}
+
+@media screen and (max-width: 927px) {
+  .date-container {
+    gap: 0px;
+  }
+  .firstName-container {
+    margin-bottom: 31px;
+  }
+  .email-default-input,
+  select {
+    max-width: 100%;
+    width: 798px;
+  }
+  .personal-resume-outer-container {
+    margin: 0px 48px 0px 48px;
+  }
+  .personal-resume-arrow-left,
+  .personal-resume-arrowLeft-container {
+    display: none;
+  }
 }

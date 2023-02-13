@@ -7,6 +7,7 @@ import '../personalResume/PersonalResume.css'
 
 import emailIcon from "../../assets/images/email.svg"
 import mobileIcon from "../../assets/images/mobile.svg"
+import arrowLeft from '../../assets/images/arrowLeft.svg'
 
 const PersonalResume = () => {
 
@@ -83,85 +84,95 @@ const PersonalResume = () => {
         localStorage.setItem("addEducation", JSON.stringify(showComponent));
     }, [showComponent]);
 
+    const backAndClearHandler = () => {
+        localStorage.clear();
+        navigate('/')
+    }
+
     return (
         <>
-            <div className='personal-resume-container'>
-                <div className='second-form-container'>
-                    <div className='second-form-firstname-lastname-container'>
-                        <span className='second-form-firstname-title'>{firstName}</span>
-                        <span className='second-form-lastname-title'>{lastName}</span>
-                    </div>
-                    <div className='second-form-email-container'>
-                        {email ? <img src={emailIcon} alt='email' /> : ""}
-                        <span className='second-form-email-title'>{email}</span>
-                    </div>
-                    <div className='second-form-mobile-container'>
-                        {mobile ? <img src={mobileIcon} alt='email' /> : ""}
-                        <span className='second-form-email-title'>{mobile}</span>
-                    </div>
-                    <div className='second-form-about-myself-container'>
-                        {aboutMyself ? <span className='second-form-about-myself-title'>ჩემს შესახებ</span> : ""}
-                        <p className='second-form-about-myself-text'>{aboutMyself}</p>
+            <div className='personal-resume-outer-container'>
+                <div className='personal-resume-arrowLeft-container'>
+                    <img src={arrowLeft} className='personal-resume-arrow-left' onClick={backAndClearHandler} alt='arrow left logo' />
+                </div>
+                <div className='personal-resume-container'>
+                    <div className='second-form-container'>
+                        <div className='second-form-firstname-lastname-container'>
+                            <span className='second-form-firstname-title'>{firstName}</span>
+                            <span className='second-form-lastname-title'>{lastName}</span>
+                        </div>
+                        <div className='second-form-email-container'>
+                            {email ? <img src={emailIcon} alt='email' /> : ""}
+                            <span className='second-form-email-title'>{email}</span>
+                        </div>
+                        <div className='second-form-mobile-container'>
+                            {mobile ? <img src={mobileIcon} alt='email' /> : ""}
+                            <span className='second-form-email-title'>{mobile}</span>
+                        </div>
+                        <div className='second-form-about-myself-container'>
+                            {aboutMyself ? <span className='second-form-about-myself-title'>ჩემს შესახებ</span> : ""}
+                            <p className='second-form-about-myself-text'>{aboutMyself}</p>
+                            {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""}
+                        </div>
+                        <div className='second-form-experience-container'>
+                            {position ? <span className='second-form-about-myself-title'>გამოცდილება</span> : ""}
+                            <div className='second-form-experience-container'>
+                                <span className='second-form-position-text'>{position}</span>
+                                {employer ? <span>, </span> : ""}
+                                <span className='second-form-position-text'>{employer}</span>
+                            </div>
+                        </div>
+                        <div className='second-form-date-container'>
+                            <span className='second-form-date-text'>{startDate}</span>
+                            {endDate ? <span className='second-form-date-text'> - </span> : ""}
+                            <span className='second-form-date-text'>{endDate}</span>
+                        </div>
+                        <div className='second-form-description-container'>
+                            <p className='second-form-description-text'>{jobDescription}</p>
+                        </div>
+                        <div className='second-form-experience-container'>
+                            <div>
+                                <span className='second-form-position-text'>{anotherPosition}</span>
+                                {anotherEmployer ? <span>, </span> : ""}
+                                <span className='second-form-position-text'>{anotherEmployer}</span>
+                            </div>
+                        </div>
+                        <div className='second-form-date-container'>
+                            <span className='second-form-date-text'>{anotherStartDate}</span>
+                            {anotherEndDate ? <span className='second-form-date-text'> - </span> : ""}
+                            <span className='second-form-date-text'>{anotherEndDate}</span>
+                        </div>
                         {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""}
-                    </div>
-                    <div className='second-form-experience-container'>
-                        {position ? <span className='second-form-about-myself-title'>გამოცდილება</span> : ""}
-                        <div style={{ marginTop: "15px" }}>
-                            <span className='second-form-position-text'>{position}</span>
-                            {employer ? <span>, </span> : ""}
-                            <span className='second-form-position-text'>{employer}</span>
+                        <div className='second-form-description-container'>
+                            <p className='second-form-description-text'>{anotherJobDescription}</p>
                         </div>
-                    </div>
-                    <div className='second-form-date-container'>
-                        <span className='second-form-date-text'>{startDate}</span>
-                        {endDate ? <span className='second-form-date-text'> - </span> : ""}
-                        <span className='second-form-date-text'>{endDate}</span>
-                    </div>
-                    <div className='second-form-description-container'>
-                        <p className='second-form-description-text'>{jobDescription}</p>
-                    </div>
-                    <div className='second-form-experience-container'>
-                        <div style={{ marginTop: "15px" }}>
-                            <span className='second-form-position-text'>{anotherPosition}</span>
-                            {anotherEmployer ? <span>, </span> : ""}
-                            <span className='second-form-position-text'>{anotherEmployer}</span>
+                        <div className='second-form-experience-container'>
+                            {university ? <span className='second-form-about-myself-title'>განათლება</span> : ""}
+                            <div className='second-form-personal-experience-container'>
+                                <span className='second-form-position-text'>{university}</span>
+                                {degree ? <span>, </span> : ""}
+                                <span className='second-form-position-text'>{degree}</span>
+                            </div>
                         </div>
-                    </div>
-                    <div className='second-form-date-container'>
-                        <span className='second-form-date-text'>{anotherStartDate}</span>
-                        {anotherEndDate ? <span className='second-form-date-text'> - </span> : ""}
-                        <span className='second-form-date-text'>{anotherEndDate}</span>
-                    </div>
-                    {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""}
-                    <div className='second-form-description-container'>
-                        <p className='second-form-description-text'>{anotherJobDescription}</p>
-                    </div>
-                    <div className='second-form-experience-container'>
-                        {university ? <span className='second-form-about-myself-title'>განათლება</span> : ""}
-                        <div style={{ marginTop: "15px" }}>
-                            <span className='second-form-position-text'>{university}</span>
-                            {degree ? <span>, </span> : ""}
-                            <span className='second-form-position-text'>{degree}</span>
+                        <div className='second-form-date-container'>
+                            <span className='second-form-date-text'>{graduationDate}</span>
                         </div>
-                    </div>
-                    <div className='second-form-date-container'>
-                        <span className='second-form-date-text'>{graduationDate}</span>
-                    </div>
-                    <div className='second-form-description-container'>
-                        <p className='second-form-description-text'>{universityDescription}</p>
-                    </div>
-                    <div className='second-form-experience-container'>
-                        <div style={{ marginTop: "15px" }}>
-                            <span className='second-form-position-text'>{anotherUniversity}</span>
-                            {anotherDegree ? <span>, </span> : ""}
-                            <span className='second-form-position-text'>{anotherDegree}</span>
+                        <div className='second-form-description-container'>
+                            <p className='second-form-description-text'>{universityDescription}</p>
                         </div>
-                    </div>
-                    <div className='second-form-date-container'>
-                        <span className='second-form-date-text'>{anotherGraduationDate}</span>
-                    </div>
-                    <div className='second-form-description-container'>
-                        <p className='second-form-description-text'>{anotherUniversityDescription}</p>
+                        <div className='second-form-experience-container'>
+                            <div>
+                                <span className='second-form-position-text'>{anotherUniversity}</span>
+                                {anotherDegree ? <span>, </span> : ""}
+                                <span className='second-form-position-text'>{anotherDegree}</span>
+                            </div>
+                        </div>
+                        <div className='second-form-date-container'>
+                            <span className='second-form-date-text'>{anotherGraduationDate}</span>
+                        </div>
+                        <div className='second-form-description-container'>
+                            <p className='second-form-description-text'>{anotherUniversityDescription}</p>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -5,3 +5,15 @@
   margin: 54px auto;
   padding: 48px 0px 305px 0px;
 }
+
+.personal-resume-arrowLeft-container {
+  margin: 45px 0px 0px 48px;
+}
+
+.personal-resume-outer-container {
+  display: flex;
+}
+
+.personal-resume-arrow-left {
+  cursor: pointer;
+}

@@ -194,7 +194,7 @@ const PersonalInformation = () => {
             </div>
             <div className='second-form-experience-container'>
               {position ? <span className='second-form-about-myself-title'>გამოცდილება</span> : ""}
-              <div style={{ marginTop: "15px" }}>
+              <div className='second-form-personal-experience-container'>
                 <span className='second-form-position-text'>{position}</span>
                 {employer ? <span>, </span> : ""}
                 <span className='second-form-position-text'>{employer}</span>

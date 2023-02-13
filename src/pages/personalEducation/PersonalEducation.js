@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form'
 import useFormPersist from 'react-hook-form-persist'
+import axios from 'axios';
 
 import '../personalExperience/PersonalExperience.css'
 
@@ -21,6 +22,8 @@ const PersonalEducation = () => {
     const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({ defaultValues });
     const [img, setImg] = useState(null);
     const [previewUrl, setPreviewUrl] = useState(null);
+    const [degrees, setdegrees] = useState([]);
+    const [showComponent, setShowComponent] = useState(JSON.parse(localStorage.getItem("addEducation")) || false);
 
     const firstName = watch('firstName');
     const lastName = watch('lastName')
@@ -64,6 +67,18 @@ const PersonalEducation = () => {
         }
     }, []);
 
+    useEffect(() => {
+        axios.get('https://resume.redberryinternship.ge/api/degrees')
+            .then((response) => {
+                setdegrees(response?.data)
+            })
+    }, [])
+
+    useEffect(() => {
+        localStorage.setItem("addEducation", JSON.stringify(showComponent));
+    }, [showComponent]);
+
+
     useFormPersist("storageKey", {
         watch,
         setValue,
@@ -82,14 +97,56 @@ const PersonalEducation = () => {
         }
     };
 
-    const [showComponent, setShowComponent] = useState(
-        JSON.parse(localStorage.getItem("addEducation")) || false
-    );
+    // const URL = 'https://resume.redberryinternship.ge/api/cvs';
+    // const DATA = {
+    //     name: firstName,
+    //     surname: lastName,
+    //     email: email,
+    //     phone_number: mobile,
+    //     experiences: [
+    //         {
+    //             position: position,
+    //             employer: employer,
+    //             start_date: startDate,
+    //             due_date: endDate,
+    //             description: jobDescription,
+    //         }
+    //     ],
+    //     educations: [
+    //         {
+    //             institute: university,
+    //             degree: degree,
+    //             due_date: graduationDate,
+    //             description: universityDescription
+    //         }
+    //     ],
+    //     image: image,
+    //     about_me: aboutMyself
+    // }
 
-    useEffect(() => {
-        localStorage.setItem("addEducation", JSON.stringify(showComponent));
-    }, [showComponent]);
-
+    // const onSubmit = (data) => {
+    //     axios.post(URL, DATA)
+    //         .then(response => { console.log(response) })
+    //         .catch(function (error) {
+    //             if (error.response) {
+    //                 // The request was made and the server responded with a status code
+    //                 // that falls out of the range of 2xx
+    //                 console.log(error.response.data);
+    //                 console.log(error.response.status);
+    //                 console.log(error.response.headers);
+    //             } else if (error.request) {
+    //                 // The request was made but no response was received
+    //                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+    //                 // http.ClientRequest in node.js
+    //                 console.log(error.request);
+    //             } else {
+    //                 // Something happened in setting up the request that triggered an Error
+    //                 console.log('Error', error.message);
+    //             }
+    //             console.log(error.config);
+    //         });
+    //     console.log(DATA)
+    // };
 
     return (
         <>
@@ -122,10 +179,16 @@ const PersonalEducation = () => {
                             <div className='firstName-container'>
                                 <span className={errors.degree ? 'firstName-error-title' : 'firstName-default-title'}>ხარისხი</span>
                                 <div className='firstname-input-and-error-container'>
-                                    <input type='text' id='FIRST_NAME' placeholder='აირჩიეთ ხარისხი'
-                                        {...register('degree', { required: true })}
+                                    <select
                                         className={degree && !errors.degree ? "email-success-input" : errors.degree ? "email-error-input" : "email-default-input "}
-                                    />
+                                        {...register('degree', { required: true })}
+                                    >
+                                        <option hidden={true} />
+                                        {degrees.map((degree, index) => (
+                                            <option key={degree.id || index} >{degree?.title}</option>
+                                        ))}
+                                    </select>
+
                                 </div>
                             </div>
                             <div className='lastName-container'>
@@ -221,10 +284,9 @@ const PersonalEducation = () => {
                             <p className='second-form-about-myself-text'>{aboutMyself}</p>
                             {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""}
                         </div>
-                        {/* ......................................................................... */}
                         <div className='second-form-experience-container'>
                             {position ? <span className='second-form-about-myself-title'>გამოცდილება</span> : ""}
-                            <div style={{ marginTop: "15px" }}>
+                            <div className='second-form-personal-experience-container'>
                                 <span className='second-form-position-text'>{position}</span>
                                 {employer ? <span>, </span> : ""}
                                 <span className='second-form-position-text'>{employer}</span>
@@ -238,9 +300,8 @@ const PersonalEducation = () => {
                         <div className='second-form-description-container'>
                             <p className='second-form-description-text'>{jobDescription}</p>
                         </div>
-                        {/* ................................. */}
                         <div className='second-form-experience-container'>
-                            <div style={{ marginTop: "15px" }}>
+                            <div>
                                 <span className='second-form-position-text'>{anotherPosition}</span>
                                 {anotherEmployer ? <span>, </span> : ""}
                                 <span className='second-form-position-text'>{anotherEmployer}</span>
@@ -257,7 +318,7 @@ const PersonalEducation = () => {
                         {aboutMyself ? <p className='second-form-about-myself-line'></p> : ""}
                         <div className='second-form-experience-container'>
                             {university ? <span className='second-form-about-myself-title'>განათლება</span> : ""}
-                            <div style={{ marginTop: "15px" }}>
+                            <div className='second-form-personal-education-title-container'>
                                 <span className='second-form-position-text'>{university}</span>
                                 {degree ? <span>, </span> : ""}
                                 <span className='second-form-position-text'>{degree}</span>
@@ -270,7 +331,7 @@ const PersonalEducation = () => {
                             <p className='second-form-description-text'>{universityDescription}</p>
                         </div>
                         <div className='second-form-experience-container'>
-                            <div style={{ marginTop: "15px" }}>
+                            <div>
                                 <span className='second-form-position-text'>{anotherUniversity}</span>
                                 {anotherDegree ? <span>, </span> : ""}
                                 <span className='second-form-position-text'>{anotherDegree}</span>
