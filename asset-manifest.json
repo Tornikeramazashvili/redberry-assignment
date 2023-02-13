@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Tornikeramazashvili/redberry-assignment/static/css/main.10825796.css",
-    "main.js": "/Tornikeramazashvili/redberry-assignment/static/js/main.0ca82b63.js",
+    "main.js": "/Tornikeramazashvili/redberry-assignment/static/js/main.2f72220d.js",
     "static/media/HelveticaNeue.ttc": "/Tornikeramazashvili/redberry-assignment/static/media/HelveticaNeue.67d426c3bd180e2ea838.ttc",
     "static/media/background.webp": "/Tornikeramazashvili/redberry-assignment/static/media/background.e96a01f9a9a37814de29.webp",
     "static/media/redberry-logo.svg": "/Tornikeramazashvili/redberry-assignment/static/media/redberry-logo.8318012502541d265bb4884a8c1bbeeb.svg",
@@ -13,10 +13,10 @@
     "static/media/arrowLeft.svg": "/Tornikeramazashvili/redberry-assignment/static/media/arrowLeft.b0c6f18d971e5e7f63cf96076907b4a3.svg",
     "static/media/arrow-left.svg": "/Tornikeramazashvili/redberry-assignment/static/media/arrow-left.83a1615e66fd6a610692ee7aaedd8d45.svg",
     "main.10825796.css.map": "/Tornikeramazashvili/redberry-assignment/static/css/main.10825796.css.map",
-    "main.0ca82b63.js.map": "/Tornikeramazashvili/redberry-assignment/static/js/main.0ca82b63.js.map"
+    "main.2f72220d.js.map": "/Tornikeramazashvili/redberry-assignment/static/js/main.2f72220d.js.map"
   },
   "entrypoints": [
     "static/css/main.10825796.css",
-    "static/js/main.0ca82b63.js"
+    "static/js/main.2f72220d.js"
   ]
 }
