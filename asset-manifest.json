@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Tornikeramazashvili/redberry-assignment/static/css/main.10825796.css",
-    "main.js": "/Tornikeramazashvili/redberry-assignment/static/js/main.2f72220d.js",
-    "static/media/HelveticaNeue.ttc": "/Tornikeramazashvili/redberry-assignment/static/media/HelveticaNeue.67d426c3bd180e2ea838.ttc",
-    "static/media/background.webp": "/Tornikeramazashvili/redberry-assignment/static/media/background.e96a01f9a9a37814de29.webp",
-    "static/media/redberry-logo.svg": "/Tornikeramazashvili/redberry-assignment/static/media/redberry-logo.8318012502541d265bb4884a8c1bbeeb.svg",
-    "static/media/email.svg": "/Tornikeramazashvili/redberry-assignment/static/media/email.940654db9dd5bf6109ec4ed3fb7ef087.svg",
-    "static/media/redExclamationMark.svg": "/Tornikeramazashvili/redberry-assignment/static/media/redExclamationMark.2a0942c0211e1a6a902e410d4568866e.svg",
-    "static/media/mobile.svg": "/Tornikeramazashvili/redberry-assignment/static/media/mobile.52a69cc71e267acb7c6acfcc88401a43.svg",
-    "static/media/greenCheckmark.svg": "/Tornikeramazashvili/redberry-assignment/static/media/greenCheckmark.f58022d87d53ae7161d4d84a6dec7b87.svg",
-    "index.html": "/Tornikeramazashvili/redberry-assignment/index.html",
-    "static/media/arrowLeft.svg": "/Tornikeramazashvili/redberry-assignment/static/media/arrowLeft.b0c6f18d971e5e7f63cf96076907b4a3.svg",
-    "static/media/arrow-left.svg": "/Tornikeramazashvili/redberry-assignment/static/media/arrow-left.83a1615e66fd6a610692ee7aaedd8d45.svg",
-    "main.10825796.css.map": "/Tornikeramazashvili/redberry-assignment/static/css/main.10825796.css.map",
-    "main.2f72220d.js.map": "/Tornikeramazashvili/redberry-assignment/static/js/main.2f72220d.js.map"
+    "main.css": "/static/css/main.3994ba06.css",
+    "main.js": "/static/js/main.b5353173.js",
+    "static/media/HelveticaNeue.ttc": "/static/media/HelveticaNeue.67d426c3bd180e2ea838.ttc",
+    "static/media/background.webp": "/static/media/background.e96a01f9a9a37814de29.webp",
+    "static/media/redberry-logo.svg": "/static/media/redberry-logo.8318012502541d265bb4884a8c1bbeeb.svg",
+    "static/media/email.svg": "/static/media/email.940654db9dd5bf6109ec4ed3fb7ef087.svg",
+    "static/media/redExclamationMark.svg": "/static/media/redExclamationMark.2a0942c0211e1a6a902e410d4568866e.svg",
+    "static/media/mobile.svg": "/static/media/mobile.52a69cc71e267acb7c6acfcc88401a43.svg",
+    "static/media/greenCheckmark.svg": "/static/media/greenCheckmark.f58022d87d53ae7161d4d84a6dec7b87.svg",
+    "static/media/arrowLeft.svg": "/static/media/arrowLeft.b0c6f18d971e5e7f63cf96076907b4a3.svg",
+    "static/media/arrow-left.svg": "/static/media/arrow-left.83a1615e66fd6a610692ee7aaedd8d45.svg",
+    "index.html": "/index.html",
+    "main.3994ba06.css.map": "/static/css/main.3994ba06.css.map",
+    "main.b5353173.js.map": "/static/js/main.b5353173.js.map"
   },
   "entrypoints": [
-    "static/css/main.10825796.css",
-    "static/js/main.2f72220d.js"
+    "static/css/main.3994ba06.css",
+    "static/js/main.b5353173.js"
   ]
 }
