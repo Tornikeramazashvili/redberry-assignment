@@ -17,15 +17,12 @@ const PersonalInformation = () => {
 
   const [defaultValues, setDefaultValues] = useState({});
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({ defaultValues });
-  const [img, setImg] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
 
   const firstName = watch('firstName');
   const lastName = watch('lastName')
   const aboutMyself = watch('aboutMyself')
   const email = watch('email')
   const mobile = watch('mobile')
-  const image = watch('image')
 
   const position = watch('position')
   const employer = watch('employer')
@@ -38,35 +35,12 @@ const PersonalInformation = () => {
   const MOBILE_REGEX = /^\+995\d{9}$/;
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const storedData = window.localStorage.getItem("storageKey");
-    if (storedData) {
-      setDefaultValues(JSON.parse(storedData));
-    }
-  }, []);
-
-  useEffect(() => {
-    const savedImageData = window.localStorage.getItem('image');
-    if (savedImageData) {
-      setPreviewUrl(savedImageData);
-    }
-  }, []);
-
   useFormPersist("storageKey", {
     watch,
     setValue,
     storage: window.localStorage,
   });
 
-  const handleImageUpload = (e) => {
-    const reader = new FileReader();
-    reader.onload = (event) => {
-      setPreviewUrl(event.target.result);
-      window.localStorage.setItem('image', event.target.result);
-    };
-    reader.readAsDataURL(e.target.files[0]);
-    setImg(e.target.files[0]);
-  };
 
   const onSubmit = (data) => {
     if (Object.keys(errors).length === 0) {
@@ -79,6 +53,7 @@ const PersonalInformation = () => {
       console.log(Object.keys(errors).length)
     }
   };
+
 
   return (
     <>
@@ -118,16 +93,6 @@ const PersonalInformation = () => {
                 </div>
                 <span className='input-hint'>მინიმუმ 2 ასო, ქართული ასოები</span>
               </div>
-            </div>
-            <div className='upload-image-container'>
-              <span className={errors.image ? 'lastName-error-title' : 'lastName-default-title'}>პირადი ფოტოს ატვირთვა</span>
-              <label className='upload-button-container'>
-                <input type="file" onChange={handleImageUpload} className='upload-image-input' {...register('image', { required: true, pattern: /\.(jpeg|jpg|png)$/ })} />
-                <p>ატვირთვა</p>
-                <span className='upload-image-input-error'>
-                  {image?.length > 0 && !errors.image ? <img src={checkMark} alt='green checkmark' /> : errors.image && <img src={exclamationMark} alt='red exclamation mark' />}
-                </span>
-              </label>
             </div>
             <div className='about-myself-container'>
               <span className='about-myself-title'>ჩემ შესახებ (არასავალდებულო)</span>
@@ -174,15 +139,10 @@ const PersonalInformation = () => {
         <div>
           <div className='second-form-container'>
             <div className='second-form-firstname-lastname-container'>
-              <span className='second-form-firstname-title'>{firstName}</span>
-              <span className='second-form-lastname-title'>{lastName}</span>
-            </div>
-            <div>
-              {previewUrl && <img src={previewUrl} alt="preview" />}
-            </div>
-            <div className='second-form-email-container'>
-              {email ? <img src={emailIcon} alt='email' /> : ""}
-              <span className='second-form-email-title'>{email}</span>
+              <div className='second-form-name-container'>
+                <span className='second-form-firstname-title'>{firstName}</span>
+                <span className='second-form-lastname-title'>{lastName}</span>
+              </div>
             </div>
             <div className='second-form-mobile-container'>
               {mobile ? <img src={mobileIcon} alt='email' /> : ""}

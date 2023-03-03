@@ -19,15 +19,12 @@ const PersonalExperience = () => {
 
   const [defaultValues, setDefaultValues] = useState({});
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({ defaultValues });
-  const [img, setImg] = useState(null);
-  const [previewUrl, setPreviewUrl] = useState(null);
 
   const firstName = watch('firstName');
   const lastName = watch('lastName')
   const aboutMyself = watch('aboutMyself')
   const email = watch('email')
   const mobile = watch('mobile')
-  const image = watch('image')
 
   const position = watch('position')
   const employer = watch('employer')
@@ -42,9 +39,6 @@ const PersonalExperience = () => {
   const anotherJobDescription = watch('anotherJobDescription')
 
   const POSITION_EMPLOYER_DESCRIPTION_REGEX = /^[A-Za-zა-ჰ.,;:!?'"0-9]{2,}( [A-Za-zა-ჰ.,;:!?'"0-9]+)*$/;
-  const NAMES_REGEX = /^[ა-ჰ]+$/;
-  const EMAIL_REGEX = /^[a-zA-Z]+@redberry.ge$/;
-  const MOBILE_REGEX = /^\+995\d{9}$/;
   const navigate = useNavigate();
 
   useEffect(() => {

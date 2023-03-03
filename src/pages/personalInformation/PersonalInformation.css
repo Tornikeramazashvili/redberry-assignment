@@ -65,7 +65,7 @@
 }
 
 .about-myself-container {
-  margin-bottom: 33px;
+  margin-bottom: 29px;
 }
 
 .email-container {
@@ -248,8 +248,19 @@ input {
 }
 
 .second-form-firstname-lastname-container {
-  width: 450px;
   word-wrap: break-word;
+  /* background-color: blue; */
+  display: flex;
+}
+
+.second-form-name-container {
+  width: 450px;
+}
+
+.uploaded-image {
+  width: 246px;
+  height: 246px;
+  border-radius: 133px;
 }
 
 .second-form-email-container {
@@ -289,7 +300,7 @@ input {
   margin-top: 15px;
 }
 
-select{
+select {
   width: 371px;
   max-width: 100%;
   height: 50px;
@@ -374,4 +385,24 @@ select{
   .firstName-lastName-container {
     gap: 0px;
   }
+}
+
+.success-input {
+  border: 1px solid #98e37e;
+}
+
+.error-input {
+  border: 1px solid red;
+}
+
+.success-title {
+  color: #98e37e;
+}
+
+.error-title {
+  color: #ef5050;
+}
+
+.default-title {
+  color: #1a1a1a;
 }

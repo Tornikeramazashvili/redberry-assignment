@@ -4,14 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## About
 
-This create resume app was made for Redberry internship
+With this application you can create and see at the same time your CV.
+app was made for Redberry internship.
 
 ## Technologies
 
 • React JS, ES6
-• React router dom
-• React hook form
-• React hook form persist
+• React Router Dom
+• React Hook Form
+• React Hook Form persist
 
 ## Setup
 

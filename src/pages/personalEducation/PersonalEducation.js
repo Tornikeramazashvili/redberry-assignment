@@ -20,8 +20,6 @@ const PersonalEducation = () => {
 
     const [defaultValues, setDefaultValues] = useState({});
     const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({ defaultValues });
-    const [img, setImg] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState(null);
     const [degrees, setdegrees] = useState([]);
     const [showComponent, setShowComponent] = useState(JSON.parse(localStorage.getItem("addEducation")) || false);
 
@@ -30,7 +28,6 @@ const PersonalEducation = () => {
     const aboutMyself = watch('aboutMyself')
     const email = watch('email')
     const mobile = watch('mobile')
-    const image = watch('image')
 
     const position = watch('position')
     const employer = watch('employer')
@@ -55,9 +52,6 @@ const PersonalEducation = () => {
     const anotherUniversityDescription = watch('anotherUniversityDescription')
 
     const POSITION_EMPLOYER_DESCRIPTION_REGEX = /^[A-Za-zა-ჰ.,;:!-?'"0-9]{2,}( [A-Za-zა-ჰ.,;:!-?'"0-9]+)*$/;
-    const NAMES_REGEX = /^[ა-ჰ]+$/;
-    const EMAIL_REGEX = /^[a-zA-Z]+@redberry.ge$/;
-    const MOBILE_REGEX = /^\+995\d{9}$/;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -96,57 +90,6 @@ const PersonalEducation = () => {
             console.log(Object.keys(errors).length)
         }
     };
-
-    // const URL = 'https://resume.redberryinternship.ge/api/cvs';
-    // const DATA = {
-    //     name: firstName,
-    //     surname: lastName,
-    //     email: email,
-    //     phone_number: mobile,
-    //     experiences: [
-    //         {
-    //             position: position,
-    //             employer: employer,
-    //             start_date: startDate,
-    //             due_date: endDate,
-    //             description: jobDescription,
-    //         }
-    //     ],
-    //     educations: [
-    //         {
-    //             institute: university,
-    //             degree: degree,
-    //             due_date: graduationDate,
-    //             description: universityDescription
-    //         }
-    //     ],
-    //     image: image,
-    //     about_me: aboutMyself
-    // }
-
-    // const onSubmit = (data) => {
-    //     axios.post(URL, DATA)
-    //         .then(response => { console.log(response) })
-    //         .catch(function (error) {
-    //             if (error.response) {
-    //                 // The request was made and the server responded with a status code
-    //                 // that falls out of the range of 2xx
-    //                 console.log(error.response.data);
-    //                 console.log(error.response.status);
-    //                 console.log(error.response.headers);
-    //             } else if (error.request) {
-    //                 // The request was made but no response was received
-    //                 // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-    //                 // http.ClientRequest in node.js
-    //                 console.log(error.request);
-    //             } else {
-    //                 // Something happened in setting up the request that triggered an Error
-    //                 console.log('Error', error.message);
-    //             }
-    //             console.log(error.config);
-    //         });
-    //     console.log(DATA)
-    // };
 
     return (
         <>

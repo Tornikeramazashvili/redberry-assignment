@@ -12,16 +12,13 @@ import arrowLeft from '../../assets/images/arrowLeft.svg'
 const PersonalResume = () => {
 
     const [defaultValues, setDefaultValues] = useState({});
-    const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm({ defaultValues });
-    const [img, setImg] = useState(null);
-    const [previewUrl, setPreviewUrl] = useState(null);
+    const { watch, setValue, formState: { errors } } = useForm({ defaultValues });
 
     const firstName = watch('firstName');
     const lastName = watch('lastName')
     const aboutMyself = watch('aboutMyself')
     const email = watch('email')
     const mobile = watch('mobile')
-    const image = watch('image')
 
     const position = watch('position')
     const employer = watch('employer')
@@ -45,10 +42,6 @@ const PersonalResume = () => {
     const anotherGraduationDate = watch('anotherGraduationDate')
     const anotherUniversityDescription = watch('anotherUniversityDescription')
 
-    const POSITION_EMPLOYER_DESCRIPTION_REGEX = /^[A-Za-zა-ჰ.,;:!-?'"0-9]{2,}( [A-Za-zა-ჰ.,;:!-?'"0-9]+)*$/;
-    const NAMES_REGEX = /^[ა-ჰ]+$/;
-    const EMAIL_REGEX = /^[a-zA-Z]+@redberry.ge$/;
-    const MOBILE_REGEX = /^\+995\d{9}$/;
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -63,26 +56,6 @@ const PersonalResume = () => {
         setValue,
         storage: window.localStorage,
     });
-
-    const onSubmit = (data) => {
-        if (Object.keys(errors).length === 0) {
-            console.log(data)
-            navigate('/personalResume')
-        } else if (setDefaultValues()) {
-            console.log(data)
-            navigate("/personalResume");
-        } else {
-            console.log(Object.keys(errors).length)
-        }
-    };
-
-    const [showComponent, setShowComponent] = useState(
-        JSON.parse(localStorage.getItem("addEducation")) || false
-    );
-
-    useEffect(() => {
-        localStorage.setItem("addEducation", JSON.stringify(showComponent));
-    }, [showComponent]);
 
     const backAndClearHandler = () => {
         localStorage.clear();
